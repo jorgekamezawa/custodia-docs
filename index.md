@@ -11,6 +11,7 @@ Portal de documentação da área de custódia do Banco Exemplo (fictício): o q
 - [Glossário](glossario.md)
 - [Regras gerais](regras/gerais.md)
 - [Regras de Calculadoras](regras/calculadoras.md)
+- [Regras de Contratos](regras/contratos.md)
 - [Padrão de documentação](padroes/documentacao.md)
 - [Decisões da área](adr.md)
 - [Projetos](projetos.md)
