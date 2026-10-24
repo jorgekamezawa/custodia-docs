@@ -1,0 +1,30 @@
+title: Custódia de financiamentos
+description: Documentação da área de custódia do Banco Exemplo (fictício) e dos seus projetos.
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-titles-from-headings
+search_enabled: true
+# Tooling and generated sources are not part of the portal.
+exclude:
+  - scripts
+  - README.md
+  - .sources
+# The menu is built from the folder of each page, so authors never write navigation fields.
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }
+  - scope: { path: "index.md" }
+    values: { nav_order: 1 }
+  - scope: { path: "padroes" }
+    values: { nav_order: 2 }
+  - scope: { path: "templates" }
+    values: { nav_exclude: true, search_exclude: true }
+  - scope: { path: "projetos.md" }
+    values: { nav_order: 99 }
+  - scope: { path: "projetos/poc-custodia-ia" }
+    values: { parent: poc-custodia-ia }
+  - scope: { path: "projetos/poc-custodia-ia/index.md" }
+    values: { parent: Projetos }

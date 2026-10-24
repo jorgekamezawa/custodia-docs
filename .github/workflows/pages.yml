@@ -1,6 +1,8 @@
 name: Portal
 
 on:
+  # A pull request only builds and checks; publishing happens on main alone.
+  pull_request:
   push:
     branches: [main]
   # Project repositories cannot trigger this build without a stored token, so the portal also refreshes daily.
@@ -24,6 +26,11 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
+      - name: Test the check script
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
+      # Area docs are checked here; each project checks its own docs in its CI.
+      - name: Check documents against the standard
+        run: python3 scripts/check_docs.py --root .
       - uses: actions/checkout@v7
         with:
           repository: jorgekamezawa/poc-custodia-ia
@@ -40,6 +47,7 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     environment:
