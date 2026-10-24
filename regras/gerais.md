@@ -1,7 +1,7 @@
 ---
 status: ativo
 atualizado: 2026-10-24
-descricao: Regras de negócio vigentes que valem para todos os módulos da custódia, sobre arredondamento de valores e unicidade do gravame por chassi.
+descricao: Regras de negócio vigentes que valem para todos os módulos da custódia, sobre arredondamento de valores, unicidade do gravame por chassi e acesso ao portal.
 ---
 # Regras gerais
 
@@ -22,3 +22,23 @@ Um chassi não pode ter dois gravames ativos ao mesmo tempo. Um novo gravame par
 - **Exemplo:** o chassi 9BWZZZ377VT004251 tem gravame ativo do contrato 1001; o registro de gravame do contrato 1002 para o mesmo chassi é recusado até a baixa do gravame do contrato 1001.
 - **Fonte:** regra fictícia da POC.
 - **Origem:** discovery da área, sem spec.
+
+## Acesso ao portal
+
+### GER-03: Nada sem login
+Sem login, nenhuma tela do portal abre e nenhuma chamada à API é atendida.
+- **Exemplo:** abrir o Início sem ter entrado leva à tela de entrada; a API responde 401.
+- **Fonte:** regra fictícia da POC.
+- **Origem:** [spec 0004](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0004-entrar-no-portal/spec.md).
+
+### GER-04: Supervisor faz o que o operador faz
+O supervisor pode fazer tudo o que o operador faz, além do que for só dele.
+- **Exemplo:** o usuário `supervisor` tem os perfis operador e supervisor.
+- **Fonte:** regra fictícia da POC.
+- **Origem:** [spec 0004](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0004-entrar-no-portal/spec.md).
+
+### GER-05: Sessão de 30 minutos sem uso
+A sessão termina depois de 30 minutos sem uso; a próxima ação pede login de novo.
+- **Exemplo:** quem entrou às 10h00 e não usou o portal até 10h31 é levado à tela de entrada na próxima ação.
+- **Fonte:** regra fictícia da POC.
+- **Origem:** [spec 0004](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0004-entrar-no-portal/spec.md).
