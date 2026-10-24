@@ -126,6 +126,11 @@ class AreaLayoutTest(unittest.TestCase):
         self.assertIsNone(check_docs.doc_type(root / "templates/adr.md", root))
         self.assertIsNone(check_docs.doc_type(root / "projetos/poc/index.md", root))
 
+    def test_placeholder_heading_of_template_is_not_required(self):
+        text = VALID_FRONTMATTER + "# Regras de garantias\n\n## Inclusão de gravame\n\n### GAR-01: X\nEnunciado.\n"
+        messages = self.repo.messages("regras/garantias.md", text)
+        self.assertFalse(any(m.startswith("seção obrigatória ausente") for m in messages))
+
     def test_links_into_generated_projects_folder_are_not_checked(self):
         messages = self.repo.messages("index.md", VALID_FRONTMATTER + "# I\n[poc](projetos/poc/)\n")
         self.assertEqual(messages, [])

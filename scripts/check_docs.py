@@ -157,7 +157,8 @@ def required_sections(kind):
     lines = template.read_text(encoding="utf-8").splitlines()
     sections = []
     for i, line in enumerate(lines):
-        if not line.startswith("## "):
+        # A heading in <angle brackets> is a placeholder the author replaces, not a fixed section.
+        if not line.startswith("## ") or line[3:].lstrip().startswith("<"):
             continue
         following = next((l for l in lines[i + 1:] if l.strip()), "")
         if not is_optional(line, following):
