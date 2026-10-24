@@ -1,7 +1,7 @@
 ---
 status: ativo
 atualizado: 2026-10-24
-descricao: Regras de negócio vigentes de Calculadoras, sobre cálculo do cronograma Price, vencimentos e limites de entrada.
+descricao: Regras de negócio vigentes de Calculadoras, sobre cálculo do cronograma Price e SAC, vencimentos e limites de entrada.
 ---
 # Regras de Calculadoras
 
@@ -22,6 +22,16 @@ A parcela é `valor financiado × taxa ÷ (1 − (1 + taxa)^−prazo)`, arredond
 O primeiro vencimento é informado; os seguintes caem no mesmo dia dos meses seguintes. Mês sem esse dia usa o último dia do mês, e o mês seguinte volta ao dia original.
 - **Exemplo:** primeiro vencimento em 31/01/2027: 31/01/2027, 28/02/2027 e 31/03/2027.
 - **Origem:** [spec 0001](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0001-cronograma-price/spec.md).
+
+## Cronograma SAC
+
+### CAL-04: Amortização constante no SAC
+A amortização de cada parcela é o valor financiado ÷ prazo, arredondada ao centavo ([GER-01](gerais.md)).
+- **Juros remuneratórios:** saldo devedor anterior × taxa, arredondados.
+- **Parcela:** amortização mais juros remuneratórios, decrescente.
+- **Última parcela:** amortiza todo o saldo restante, absorvendo a diferença de arredondamento.
+- **Exemplo:** R$ 10.000,00 a 2% ao mês em 12 meses: amortização de R$ 833,33 nas parcelas 1 a 11 e de R$ 833,37 na 12; parcela 1 de R$ 1.033,33 e parcela 12 de R$ 850,04.
+- **Origem:** [spec 0002](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0002-cronograma-sac/spec.md).
 
 ## Limites
 
