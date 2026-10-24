@@ -1,0 +1,50 @@
+name: Portal
+
+on:
+  push:
+    branches: [main]
+  # Project repositories cannot trigger this build without a stored token, so the portal also refreshes daily.
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# A newer build replaces one still waiting, but never cancels a deploy in progress.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: jorgekamezawa/poc-custodia-ia
+          path: .sources/poc-custodia-ia
+          sparse-checkout: docs
+      - name: Bring project docs into the portal
+        run: |
+          mkdir -p projetos
+          cp -r .sources/poc-custodia-ia/docs projetos/poc-custodia-ia
+          rm -rf .sources
+      - uses: actions/configure-pages@v6
+      - uses: actions/jekyll-build-pages@v1
+      - uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
