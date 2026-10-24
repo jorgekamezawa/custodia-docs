@@ -15,6 +15,7 @@ descricao: Termos da custódia de financiamentos, com definição única e o nom
 | CET | `TotalEffectiveCost` | Custo efetivo total: taxa que soma juros, tarifas e impostos do contrato, ao ano. | Calculadoras |
 | Chassi | `chassisNumber` | Número de identificação único do veículo; é a chave do gravame. | Garantias |
 | Contrato | `Contract` | Financiamento de veículo já assinado que a custódia acompanha até o fim. | Contratos |
+| Custos pagos antecipadamente | `upfrontCosts` | Tarifas, tributos e seguros pagos na contratação, fora das parcelas; reduzem o valor liberado no cálculo do CET. | Calculadoras |
 | Cronograma | `InstallmentSchedule` | Lista das parcelas do contrato, com vencimento e valores de cada uma. | Contratos |
 | Estorno | `Refund` | Devolução ao cliente de valor já pago. | Cancelamento |
 | Gravame | `Lien` | Registro que prende o veículo ao banco como garantia até a quitação. | Garantias |
@@ -30,4 +31,5 @@ descricao: Termos da custódia de financiamentos, com definição única e o nom
 | Saldo devedor | `OutstandingBalance` | Quanto do valor financiado ainda falta pagar, sem os juros futuros. | Contratos |
 | SNG | `LienRegistry` | Sistema Nacional de Gravames, onde o gravame é registrado e baixado; na POC é simulado. | Garantias |
 | Supervisor | `SUPERVISOR` | Perfil do back-office que faz o que o operador faz e aprova operações que pedem segunda conferência. | Todos |
+| Valor liberado | `releasedAmount` | Valor financiado menos os custos pagos antecipadamente: o que o cliente efetivamente recebe. | Calculadoras |
 | Troca de vencimento | `DueDateChange` | Mudança do dia de vencimento das parcelas restantes. | Alteração de plano |
