@@ -1,7 +1,7 @@
 ---
 status: ativo
 atualizado: 2026-10-24
-descricao: Regras de negócio vigentes de Contratos, sobre o cadastro do contrato assinado, seus dados obrigatórios e o cronograma guardado.
+descricao: Regras de negócio vigentes de Contratos, sobre o cadastro do contrato assinado, seus dados obrigatórios, o cronograma guardado, a situação das parcelas e o saldo devedor.
 ---
 # Regras de Contratos
 
@@ -36,3 +36,17 @@ O cadastro guarda o usuário que cadastrou e o instante do cadastro.
 - **Exemplo:** cadastro feito pelo `operador` às 10h00 de 10/01/2027 guarda os dois.
 - **Fonte:** regra fictícia da POC.
 - **Origem:** [spec 0005](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0005-cadastro-de-contrato/spec.md).
+
+## Consulta
+
+### CON-05: Situação da parcela não paga
+Parcela não paga está "Em aberto" até o dia do vencimento e "Vencida" a partir do dia seguinte. O dia de hoje é a data no horário de Brasília.
+- **Exemplo:** em 24/10/2026, a parcela de 10/10/2026 está vencida e as de 24/10/2026 e 10/11/2026 estão em aberto.
+- **Fonte:** regra fictícia da POC.
+- **Origem:** [spec 0006](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0006-consulta-de-contrato/spec.md).
+
+### CON-06: Saldo devedor
+O saldo devedor do contrato é o saldo depois da última parcela paga; sem parcela paga, é o valor financiado.
+- **Exemplo:** contrato de R$ 10.000,00 sem parcela paga tem saldo devedor de R$ 10.000,00.
+- **Fonte:** regra fictícia da POC.
+- **Origem:** [spec 0006](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0006-consulta-de-contrato/spec.md).
