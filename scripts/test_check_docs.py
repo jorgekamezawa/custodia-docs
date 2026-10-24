@@ -80,6 +80,13 @@ class ProjectLayoutTest(unittest.TestCase):
         text = VALID_FRONTMATTER + "# A\n[ok](existe.md) [ok](existe.md#secao) [web](https://x.y) [quebrado](falta.md)\n"
         self.assertEqual([m for m in self.repo.messages("docs/a.md", text) if m.startswith("link")], ["link quebrado: falta.md"])
 
+    def test_relative_link_leaving_the_repository_is_an_error(self):
+        outside = self.repo.root.parent / "vizinho.md"
+        outside.write_text("x", encoding="utf-8")
+        self.addCleanup(outside.unlink)
+        text = VALID_FRONTMATTER + "# A\n[fora](../../vizinho.md)\n"
+        self.assertIn("link relativo sai do repositório; use a URL do GitHub", self.repo.messages("docs/a.md", text))
+
     def test_spec_and_tasks_are_recognized_with_their_names(self):
         root = self.repo.root
         self.assertEqual(check_docs.doc_type(root / "docs/specs/0001-x/spec.md", root), "spec")

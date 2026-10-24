@@ -178,6 +178,14 @@ def prose_lines(lines, start):
             yield i + 1, INLINE_CODE.sub("", line)
 
 
+def leaves_repository(target, path, root):
+    # The portal copies project docs to another folder, so a path out of the repository breaks there.
+    if re.match(r"^[a-z][a-z0-9+.-]*:", target) or target.startswith(("#", "/")):
+        return False
+    relative = target.split("#", 1)[0]
+    return bool(relative) and not (path.parent / relative).resolve().is_relative_to(root.resolve())
+
+
 def broken_link(target, path, root):
     if re.match(r"^[a-z][a-z0-9+.-]*:", target) or target.startswith("#"):
         return False
@@ -239,7 +247,9 @@ def check_file(path, root):
         if NA.search(text):
             add("ERRO", number, "N/A não é permitido; apague a seção que não se aplica")
         for target in LINK.findall(text):
-            if broken_link(target, path, root):
+            if leaves_repository(target, path, root):
+                add("ERRO", number, "link relativo sai do repositório; use a URL do GitHub")
+            elif broken_link(target, path, root):
                 add("ERRO", number, f"link quebrado: {target}")
         if text.strip():
             size += 1

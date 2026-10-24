@@ -172,6 +172,6 @@ Correção que só faz o código cumprir uma regra que já existe, sem mudar con
 
 ## Verificação
 - **Script `scripts/check_docs.py`** (no `custodia-docs`): roda ao salvar um documento e no CI dos dois repositórios.
-  - Erro: metadados ausentes ou com status inválido, travessão, `N/A`, seção obrigatória do template ausente, link relativo quebrado.
+  - Erro: metadados ausentes ou com status inválido, travessão, `N/A`, seção obrigatória do template ausente, link relativo quebrado ou que sai do repositório (o portal copia a doc do projeto para outra pasta; para o outro repositório, use a URL do GitHub).
   - Aviso: tamanho acima da referência.
 - **Subagente `revisor-docs`:** contexto limpo, confere as regras de escrita 1 a 9 e as regras do tipo ao terminar um documento, antes de ele ir para aprovação humana. Aponta só violação deste padrão, não preferência de estilo.
