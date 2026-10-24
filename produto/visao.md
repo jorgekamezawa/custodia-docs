@@ -32,6 +32,8 @@ Depois de assinado, o contrato passa a ser acompanhado à mão, em planilha e si
 | Garantias | Registro e baixa do gravame e alertas de prazo | Na primeira feature |
 | Cancelamento | Arrependimento e estorno | Na primeira feature |
 
+Regras que valem para todos os módulos: [Regras gerais](../regras/gerais.md). Termos da área: [Glossário](../glossario.md).
+
 ## Fora do escopo
 - Cliente final: não usa o portal nem recebe comunicação da custódia.
 - Simulação e contratação: são de outro time; a custódia recebe o contrato já assinado.
