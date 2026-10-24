@@ -1,7 +1,11 @@
+---
+status: ativo
+atualizado: 2026-10-24
+descricao: Ponto de entrada do portal da área de custódia de financiamentos.
+---
 # Custódia de financiamentos
 
-Portal de documentação da área de custódia do Banco Exemplo (fictício). A estrutura é definida na fase 1.
+Portal de documentação da área de custódia do Banco Exemplo (fictício): o que é da área inteira e, em Projetos, a documentação de cada sistema.
 
-## Projetos
-
-- [poc-custodia-ia](projetos/poc-custodia-ia/)
+- [Padrão de documentação](padroes/documentacao.md)
+- [Projetos](projetos.md)

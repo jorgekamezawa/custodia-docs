@@ -1,0 +1,7 @@
+# Portal build output and the project docs copied in at build time.
+_site/
+.jekyll-cache/
+projetos/
+.sources/
+*:Zone.Identifier
+__pycache__/
