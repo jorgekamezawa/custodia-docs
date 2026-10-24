@@ -20,6 +20,10 @@ defaults:
     values: { nav_order: 1 }
   - scope: { path: "padroes" }
     values: { nav_order: 2 }
+  - scope: { path: "adr.md" }
+    values: { nav_order: 3 }
+  - scope: { path: "adr" }
+    values: { parent: Decisões da área }
   - scope: { path: "templates" }
     values: { nav_exclude: true, search_exclude: true }
   - scope: { path: "projetos.md" }
