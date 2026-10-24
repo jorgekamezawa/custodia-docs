@@ -17,7 +17,7 @@ A documentação tem dois leitores: pessoas e agentes de IA. Por isso cada docum
 5. **Listas e tabelas antes de prosa.** Parágrafos com no máximo 3 frases.
 6. **Teste de corte.** Se apagar a frase não perde informação, apague.
 7. **Explique no primeiro uso.** Termo de domínio ou pouco comum ganha uma explicação curta na primeira vez, ou um link para o glossário.
-8. **Um termo, um nome.** Use o termo do glossário; sinônimo faz pessoa e agente acharem que são coisas diferentes.
+8. **Um termo, um nome.** Use o termo do glossário; sinônimo faz pessoa e agente acharem que são coisas diferentes. Nem apelido local, mesmo explicado ("juros remuneratórios, chamados só de juros aqui"): o nome curto colide com outro termo (juros de mora). Vale também para nome no código: campo, coluna e classe usam o "Nome no código" do glossário.
 9. **Título que diz o conteúdo.** "Baixa de gravame após quitação", não "Regras 2".
 10. **Orçamento de tamanho.** Cada tipo tem um tamanho de referência. A verificação aponta quando passar; passar é permitido com motivo registrado.
 11. **Diagramas em Mermaid** (diagrama escrito em texto, que o GitHub e o portal desenham), só quando substituem texto.
