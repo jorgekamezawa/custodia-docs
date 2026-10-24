@@ -39,11 +39,11 @@ O cadastro guarda o usuário que cadastrou e o instante do cadastro.
 
 ## Consulta
 
-### CON-05: Situação da parcela não paga
-Parcela não paga está "Em aberto" até o dia do vencimento e "Vencida" a partir do dia seguinte. O dia de hoje é a data no horário de Brasília.
-- **Exemplo:** em 24/10/2026, a parcela de 10/10/2026 está vencida e as de 24/10/2026 e 10/11/2026 estão em aberto.
+### CON-05: Situação da parcela
+Parcela paga está "Paga", qualquer que seja o vencimento. A não paga está "Em aberto" até o dia do vencimento e "Vencida" a partir do dia seguinte. O dia de hoje é a data no horário de Brasília.
+- **Exemplo:** em 24/10/2026, a parcela de 10/10/2026 sem pagamento está vencida, a mesma parcela paga está paga, e as de 24/10/2026 e 10/11/2026 sem pagamento estão em aberto.
 - **Fonte:** regra fictícia da POC.
-- **Origem:** [spec 0006](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0006-consulta-de-contrato/spec.md).
+- **Origem:** [spec 0006](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0006-consulta-de-contrato/spec.md); alterada pela [spec 0007](https://github.com/jorgekamezawa/poc-custodia-ia/blob/main/docs/specs/0007-pagamento-em-dia/spec.md).
 
 ### CON-06: Saldo devedor
 O saldo devedor do contrato é o saldo depois da última parcela paga; sem parcela paga, é o valor financiado.
