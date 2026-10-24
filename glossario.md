@@ -17,6 +17,7 @@ descricao: Termos da custódia de financiamentos, com definição única e o nom
 | Contrato | `Contract` | Financiamento de veículo já assinado que a custódia acompanha até o fim. | Contratos |
 | Custos pagos antecipadamente | `upfrontCosts` | Tarifas, tributos e seguros pagos na contratação, fora das parcelas; reduzem o valor liberado no cálculo do CET. | Calculadoras |
 | Cronograma | `InstallmentSchedule` | Lista das parcelas do contrato, com vencimento e valores de cada uma. | Contratos |
+| Data de liberação | `releaseDate` | Dia em que o banco entrega o valor financiado ao cliente; marco inicial do CET e limite mais antigo de um pagamento. | Contratos |
 | Estorno | `Refund` | Devolução ao cliente de valor já pago. | Cancelamento |
 | Gravame | `Lien` | Registro que prende o veículo ao banco como garantia até a quitação. | Garantias |
 | Juros de mora | `DefaultInterest` | Juros cobrados por dia de atraso de uma parcela. | Pagamentos |
