@@ -7,6 +7,7 @@ descricao: Ponto de entrada do portal da área de custódia de financiamentos.
 
 Portal de documentação da área de custódia do Banco Exemplo (fictício): o que é da área inteira e, em Projetos, a documentação de cada sistema.
 
+- [Visão da área](produto/visao.md)
 - [Padrão de documentação](padroes/documentacao.md)
 - [Decisões da área](adr.md)
 - [Projetos](projetos.md)
