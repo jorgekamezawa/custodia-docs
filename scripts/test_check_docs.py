@@ -87,6 +87,11 @@ class ProjectLayoutTest(unittest.TestCase):
         text = VALID_FRONTMATTER + "# A\n[fora](../../vizinho.md)\n"
         self.assertIn("link relativo sai do repositório; use a URL do GitHub", self.repo.messages("docs/a.md", text))
 
+    def test_backslash_before_backtick_outside_code_is_an_error(self):
+        text = VALID_FRONTMATTER + "# A\nuse \\`campo\\` aqui\n`ok`\n```\ncodigo \\` liberado\n```\n"
+        messages = self.repo.messages("docs/a.md", text)
+        self.assertEqual(sum(m.startswith("barra invertida antes de crase") for m in messages), 1)
+
     def test_spec_and_tasks_are_recognized_with_their_names(self):
         root = self.repo.root
         self.assertEqual(check_docs.doc_type(root / "docs/specs/0001-x/spec.md", root), "spec")

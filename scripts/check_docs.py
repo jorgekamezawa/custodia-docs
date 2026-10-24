@@ -244,6 +244,9 @@ def check_file(path, root):
         for char, name in DASHES.items():
             if char in text:
                 add("ERRO", number, f"{name} não é permitido; use vírgula, dois-pontos ou parênteses")
+        # Checked on the raw line: the escape usually sits inside the inline code it was meant to write.
+        if "\\`" in lines[number - 1]:
+            add("ERRO", number, "barra invertida antes de crase: escreva a crase sem escape")
         if NA.search(text):
             add("ERRO", number, "N/A não é permitido; apague a seção que não se aplica")
         for target in LINK.findall(text):
